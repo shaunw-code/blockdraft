@@ -1,0 +1,444 @@
+/* ==================== */
+/* GENERAL */
+/* ==================== */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+
+/* ==================== */
+/* START SCREEN */
+/* ==================== */
+
+#start-screen {
+    text-align: center;
+    padding-top: 100px;
+}
+
+#start-screen h1 {
+    font-size: 45px;
+}
+
+#new-project-button {
+    background: #0757b8;
+    color: white;
+    border: none;
+    border-radius: 25px;
+
+    padding: 15px 35px;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+#new-project-button:hover {
+    background: #064a9c;
+}
+
+
+/* ==================== */
+/* EDITOR */
+/* ==================== */
+
+#editor {
+    display: none;
+    height: 100vh;
+}
+
+
+/* ==================== */
+/* TOP BAR */
+/* ==================== */
+
+header {
+    height: 65px;
+
+    background: #142438;
+    color: white;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 20px;
+
+    box-sizing: border-box;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: normal;
+}
+
+.project-name {
+    margin-left: 40px;
+
+    background: #b8c1e3;
+    color: #333;
+
+    padding: 9px 40px;
+
+    font-size: 13px;
+}
+
+.top-buttons {
+    margin-left: auto;
+
+    font-size: 25px;
+    font-weight: bold;
+}
+
+
+/* ==================== */
+/* MAIN EDITOR */
+/* ==================== */
+
+main {
+    display: flex;
+    height: calc(100vh - 65px);
+}
+
+
+/* ==================== */
+/* TOOLBOX */
+/* ==================== */
+
+.toolbox {
+    width: 120px;
+
+    flex-shrink: 0;
+
+    background: white;
+
+    border-right: 2px solid #555;
+
+    box-sizing: border-box;
+}
+
+.toolbox h2 {
+    margin: 0;
+
+    padding: 8px;
+
+    font-size: 18px;
+    font-weight: normal;
+
+    border-bottom: 2px solid #555;
+}
+
+.toolbox button {
+    display: block;
+
+    width: 100%;
+
+    padding: 12px 5px;
+
+    border: none;
+    background: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.toolbox button:hover {
+    background: #dcebf4;
+}
+
+.toolbox button.active {
+    background: #d5e8f3;
+    color: #0757b8;
+}
+
+
+/* ==================== */
+/* WORKSPACE */
+/* ==================== */
+
+.workspace {
+    flex: 1;
+
+    overflow: auto;
+
+    background: #a9df91;
+
+    position: relative;
+}
+
+
+/* ==================== */
+/* GRID */
+/* ==================== */
+
+#grid {
+    position: relative;
+
+    width: 5000px;
+    height: 5000px;
+
+    background-color: #a9df91;
+
+    background-image:
+        linear-gradient(
+            to right,
+            rgba(60, 60, 60, 0.35) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            to bottom,
+            rgba(60, 60, 60, 0.35) 1px,
+            transparent 1px
+        );
+
+    background-size: 25px 25px;
+
+    cursor: default;
+}
+
+
+/* ==================== */
+/* SVG LAYER */
+/* ==================== */
+
+#building-layer {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 5000px;
+    height: 5000px;
+
+    z-index: 5;
+}
+
+
+/* ==================== */
+/* BUILDINGS */
+/* ==================== */
+
+.building-shape {
+    fill: white;
+    fill-opacity: 0.75;
+
+    stroke: #111;
+    stroke-width: 3;
+
+    stroke-dasharray: 10 5;
+
+    cursor: pointer;
+
+    pointer-events: auto;
+}
+
+.building-shape:hover {
+    fill: #dcebf4;
+}
+
+.building-shape.selected {
+    fill: #b9ddf2;
+
+    stroke: #0757b8;
+
+    stroke-width: 5;
+}
+
+
+/* ==================== */
+/* ROOMS */
+/* ==================== */
+
+.room-shape {
+    fill: white;
+
+    fill-opacity: 0.35;
+
+    stroke: #333;
+
+    stroke-width: 2;
+
+    stroke-dasharray: 5 3;
+
+    cursor: pointer;
+
+    pointer-events: auto;
+}
+
+.room-shape:hover {
+    fill: #e7eef5;
+}
+
+.room-shape.selected {
+    fill: #c9e6f7;
+
+    stroke: #0757b8;
+
+    stroke-width: 3;
+}
+
+
+/* Room name */
+
+.room-label {
+    font-size: 13px;
+
+    font-family: Arial, sans-serif;
+
+    text-anchor: middle;
+
+    dominant-baseline: middle;
+
+    pointer-events: none;
+
+    fill: #111;
+
+    font-weight: bold;
+}
+
+
+/* ==================== */
+/* TEMPORARY DRAWING */
+/* ==================== */
+
+.building-line {
+    position: absolute;
+
+    height: 3px;
+
+    background: #111;
+
+    transform-origin: left center;
+
+    pointer-events: none;
+
+    z-index: 10;
+}
+
+.grid-point {
+    position: absolute;
+
+    width: 8px;
+    height: 8px;
+
+    background: #111;
+
+    border-radius: 50%;
+
+    transform: translate(-50%, -50%);
+
+    pointer-events: none;
+
+    z-index: 11;
+}
+
+
+/* ==================== */
+/* PROPERTIES */
+/* ==================== */
+
+.properties {
+    width: 220px;
+
+    flex-shrink: 0;
+
+    background: white;
+
+    border-left: 2px solid #555;
+
+    padding: 15px;
+
+    box-sizing: border-box;
+}
+
+.properties h2 {
+    margin-top: 0;
+
+    font-size: 20px;
+
+    font-weight: normal;
+}
+
+.properties h3 {
+    margin-top: 20px;
+}
+
+.properties p {
+    font-size: 14px;
+}
+
+
+/* Hidden by default */
+
+#building-properties,
+#room-properties {
+    display: none;
+}
+
+
+/* Room name input */
+
+#room-name {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 8px;
+
+    margin-top: 8px;
+
+    margin-bottom: 10px;
+}
+
+
+/* Property buttons */
+
+.properties button {
+    width: 100%;
+
+    padding: 9px;
+
+    margin-top: 8px;
+
+    border: none;
+
+    background: #0757b8;
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.properties button:hover {
+    background: #064a9c;
+}
+
+
+/* Delete buttons */
+
+#delete-building-button,
+#delete-room-button {
+    background: #e05252;
+}
+
+#delete-building-button:hover,
+#delete-room-button:hover {
+    background: #c63d3d;
+}
+
+
+/* Draw room button */
+
+#draw-room-button {
+    background: #0757b8;
+}
+
+#draw-room-button.active {
+    background: #5b38a8;
+}

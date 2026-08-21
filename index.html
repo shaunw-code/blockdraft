@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BlockDraft</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- START SCREEN -->
+    <div id="start-screen">
+        <h1>BlockDraft</h1>
+        <button id="new-project-button">+ New Project</button>
+    </div>
+
+
+    <!-- EDITOR -->
+    <div id="editor">
+
+        <!-- TOP BAR -->
+        <header>
+            <h1>BlockDraft</h1>
+
+            <div class="project-name">
+                Untitled Project
+            </div>
+
+            <div class="top-buttons">
+                ↶ &nbsp;↷
+            </div>
+        </header>
+
+
+        <main>
+
+            <!-- TOOLBOX -->
+            <aside class="toolbox">
+
+                <h2>Toolbox</h2>
+
+                <button id="select-button">Select</button>
+                <button id="building-button">Building</button>
+                <button>Road</button>
+                <button>Nature</button>
+                <button>Parking</button>
+                <button>CrossWalk</button>
+                <button>Water</button>
+                <button>Misc</button>
+
+            </aside>
+
+
+            <!-- WORKSPACE -->
+            <section class="workspace">
+
+                <div id="grid">
+
+                    <svg id="building-layer"
+                         width="5000"
+                         height="5000">
+                    </svg>
+
+                </div>
+
+            </section>
+
+
+            <!-- PROPERTIES -->
+            <aside class="properties">
+
+                <h2>Properties</h2>
+
+                <!-- Nothing selected -->
+                <div id="property-message">
+                    <p>Select an object to edit its properties.</p>
+                </div>
+
+
+                <!-- Building properties -->
+                <div id="building-properties">
+
+                    <h3>Building</h3>
+
+                    <p>Type: Building</p>
+
+                    <p id="building-size">
+                        Size: —
+                    </p>
+
+                    <button id="draw-room-button">
+                        Draw Room
+                    </button>
+
+                    <button id="delete-building-button">
+                        Delete Building
+                    </button>
+
+                </div>
+
+
+                <!-- Room properties -->
+                <div id="room-properties">
+
+                    <h3>Room</h3>
+
+                    <label for="room-name">
+                        Room Name:
+                    </label>
+
+                    <input
+                        type="text"
+                        id="room-name"
+                        value="Untitled Room"
+                    >
+
+                    <button id="rename-room-button">
+                        Rename Room
+                    </button>
+
+                    <button id="delete-room-button">
+                        Delete Room
+                    </button>
+
+                </div>
+
+            </aside>
+
+        </main>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
