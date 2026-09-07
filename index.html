@@ -7,130 +7,311 @@
 
 <body>
 
-    <!-- START SCREEN -->
-    <div id="start-screen">
+<div id="start-screen">
+    <h1>BlockDraft</h1>
+    <button id="new-project-button">+ New Project</button>
+</div>
+
+<div id="editor">
+
+    <header>
         <h1>BlockDraft</h1>
-        <button id="new-project-button">+ New Project</button>
-    </div>
+
+        <div class="project-name">
+            Untitled Project
+        </div>
+
+        <div class="top-buttons">
+            ↶ &nbsp;↷
+        </div>
+    </header>
+
+    <main>
+
+        <aside class="toolbox">
+
+            <h2>Toolbox</h2>
+
+            <button id="select-button">Select</button>
+            <button id="building-button">Building</button>
+            <button id="road-button">Road</button>
+
+            <button>Nature</button>
+            <button>Parking</button>
+            <button>CrossWalk</button>
+            <button>Water</button>
+            <button>Misc</button>
+
+        </aside>
 
 
-    <!-- EDITOR -->
-    <div id="editor">
+        <section class="workspace">
 
-        <!-- TOP BAR -->
-        <header>
-            <h1>BlockDraft</h1>
+            <div id="grid">
 
-            <div class="project-name">
-                Untitled Project
+                <svg id="building-layer"
+                     width="5000"
+                     height="5000">
+                </svg>
+
             </div>
 
-            <div class="top-buttons">
-                ↶ &nbsp;↷
+        </section>
+
+
+        <aside class="properties">
+
+            <h2>Properties</h2>
+
+            <div id="property-message">
+                <p>Select an object to edit its properties.</p>
             </div>
-        </header>
 
 
-        <main>
+            <!-- BUILDING -->
 
-            <!-- TOOLBOX -->
-            <aside class="toolbox">
+            <div id="building-properties">
 
-                <h2>Toolbox</h2>
+                <h3>Building</h3>
 
-                <button id="select-button">Select</button>
-                <button id="building-button">Building</button>
-                <button>Road</button>
-                <button>Nature</button>
-                <button>Parking</button>
-                <button>CrossWalk</button>
-                <button>Water</button>
-                <button>Misc</button>
+                <p>Type: Building</p>
 
-            </aside>
+                <p id="building-size">
+                    Size: —
+                </p>
 
+                <button id="draw-room-button">
+                    Draw Room
+                </button>
 
-            <!-- WORKSPACE -->
-            <section class="workspace">
+                <button id="delete-building-button">
+                    Delete Building
+                </button>
 
-                <div id="grid">
-
-                    <svg id="building-layer"
-                         width="5000"
-                         height="5000">
-                    </svg>
-
-                </div>
-
-            </section>
+            </div>
 
 
-            <!-- PROPERTIES -->
-            <aside class="properties">
+            <!-- ROOM -->
 
-                <h2>Properties</h2>
+            <div id="room-properties">
 
-                <!-- Nothing selected -->
-                <div id="property-message">
-                    <p>Select an object to edit its properties.</p>
-                </div>
+                <h3>Room</h3>
 
+                <label for="room-name">
+                    Room Name:
+                </label>
 
-                <!-- Building properties -->
-                <div id="building-properties">
+                <input
+                    type="text"
+                    id="room-name"
+                    value="Untitled Room"
+                >
 
-                    <h3>Building</h3>
+                <button id="rename-room-button">
+                    Rename Room
+                </button>
 
-                    <p>Type: Building</p>
+                <button id="delete-room-button">
+                    Delete Room
+                </button>
 
-                    <p id="building-size">
-                        Size: —
-                    </p>
-
-                    <button id="draw-room-button">
-                        Draw Room
-                    </button>
-
-                    <button id="delete-building-button">
-                        Delete Building
-                    </button>
-
-                </div>
+            </div>
 
 
-                <!-- Room properties -->
-                <div id="room-properties">
+            <!-- ROAD -->
 
-                    <h3>Room</h3>
+            <div id="road-properties">
 
-                    <label for="room-name">
-                        Room Name:
-                    </label>
+                <h3>Road</h3>
 
-                    <input
-                        type="text"
-                        id="room-name"
-                        value="Untitled Room"
-                    >
+                <p>Type: Road</p>
 
-                    <button id="rename-room-button">
-                        Rename Room
-                    </button>
+                <label for="road-name">
+                    Road Name:
+                </label>
 
-                    <button id="delete-room-button">
-                        Delete Room
-                    </button>
+                <input
+                    type="text"
+                    id="road-name"
+                    value="Unnamed Road"
+                >
 
-                </div>
+                <button id="rename-road-button">
+                    Rename Road
+                </button>
 
-            </aside>
+                <label for="road-width-select">
+                    Road Width:
+                </label>
 
-        </main>
+                <select id="road-width-select">
+                    <option value="3">3 grid squares</option>
+                    <option value="6" selected>6 grid squares</option>
+                    <option value="9">9 grid squares</option>
+                    <option value="12">12 grid squares</option>
+                </select>
 
-    </div>
+                <p id="road-length">
+                    Length: —
+                </p>
+
+                <hr>
+
+                <h3>Sidewalk</h3>
+
+                <button id="draw-sidewalk-button">
+                    Draw Sidewalk
+                </button>
+
+                <hr>
+
+                <h3>Road Markings</h3>
+
+                <label for="marking-color-type">
+                    Marking Color:
+                </label>
+
+                <select id="marking-color-type">
+                    <option value="yellow">
+                        Yellow
+                    </option>
+
+                    <option value="white">
+                        White
+                    </option>
+                </select>
+
+                <label for="marking-style">
+                    Marking Style:
+                </label>
+
+                <select id="marking-style">
+
+                    <option value="solid">
+                        Solid
+                    </option>
+
+                    <option value="dotted">
+                        Dotted
+                    </option>
+
+                    <option value="double">
+                        Double
+                    </option>
+
+                    <option value="solid-dotted">
+                        Solid + Dotted
+                    </option>
+
+                    <option value="dotted-solid">
+                        Dotted + Solid
+                    </option>
+
+                </select>
+
+                <button id="draw-marking-button">
+                    Draw Marking
+                </button>
+
+                <button id="delete-road-button">
+                    Delete Road
+                </button>
+
+            </div>
 
 
-    <script src="script.js"></script>
+            <!-- SIDEWALK -->
+
+            <div id="sidewalk-properties">
+
+                <h3>Sidewalk</h3>
+
+                <p>Type: Sidewalk</p>
+
+                <label for="sidewalk-color">
+                    Sidewalk Color:
+                </label>
+
+                <input
+                    type="color"
+                    id="sidewalk-color"
+                    value="#c9ad78"
+                >
+
+                <button id="delete-sidewalk-button">
+                    Delete Sidewalk
+                </button>
+
+            </div>
+
+
+            <!-- MARKING -->
+
+            <div id="marking-properties">
+
+                <h3>Road Marking</h3>
+
+                <label for="selected-marking-color">
+                    Color:
+                </label>
+
+                <select id="selected-marking-color">
+
+                    <option value="yellow">
+                        Yellow
+                    </option>
+
+                    <option value="white">
+                        White
+                    </option>
+
+                </select>
+
+                <label for="selected-marking-style">
+                    Style:
+                </label>
+
+                <select id="selected-marking-style">
+
+                    <option value="solid">
+                        Solid
+                    </option>
+
+                    <option value="dotted">
+                        Dotted
+                    </option>
+
+                    <option value="double">
+                        Double
+                    </option>
+
+                    <option value="solid-dotted">
+                        Solid + Dotted
+                    </option>
+
+                    <option value="dotted-solid">
+                        Dotted + Solid
+                    </option>
+
+                </select>
+
+                <button id="update-marking-button">
+                    Update Marking
+                </button>
+
+                <button id="delete-marking-button">
+                    Delete Marking
+                </button>
+
+            </div>
+
+        </aside>
+
+    </main>
+
+</div>
+
+<script src="script.js"></script>
 
 </body>
 </html>
