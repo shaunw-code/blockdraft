@@ -296,10 +296,12 @@ main {
 
     stroke: #555;
 
-    stroke-linecap: round;
+    stroke-linecap: butt;
     stroke-linejoin: round;
 
     pointer-events: stroke;
+
+    cursor: pointer;
 }
 
 .road-shape:hover {
@@ -320,7 +322,7 @@ main {
 
     stroke: #c9ad78;
 
-    stroke-linecap: round;
+    stroke-linecap: butt;
     stroke-linejoin: round;
 
     pointer-events: stroke;
@@ -336,6 +338,28 @@ main {
     stroke: #3979b8;
 }
 
+
+/* ====================
+   ROAD MARKINGS
+==================== */
+
+.marking-group {
+    cursor: pointer;
+
+    pointer-events: visiblePainted;
+}
+
+.marking-line {
+    fill: none;
+
+    stroke-linecap: butt;
+
+    pointer-events: stroke;
+}
+
+.marking-line.selected {
+    stroke: #3979b8 !important;
+}
 
 /* ====================
    MARKINGS
