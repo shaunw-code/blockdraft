@@ -218,6 +218,24 @@ function setTool(tool) {
     drawingSidewalk = false;
     drawingMarking = false;
 
+    document
+    .querySelectorAll(".road-shape")
+    .forEach(road => {
+        road.style.pointerEvents = "stroke";
+    });
+
+document
+    .querySelectorAll(".sidewalk-shape")
+    .forEach(sidewalk => {
+        sidewalk.style.pointerEvents = "stroke";
+    });
+
+document
+    .querySelectorAll(".marking-line")
+    .forEach(marking => {
+        marking.style.pointerEvents = "stroke";
+    });
+
     buildingPoints = [];
     roomPoints = [];
     roadPoints = [];
@@ -287,15 +305,36 @@ function setTool(tool) {
         disableBuildingClicks();
     }
 
-    if (tool === "marking") {
+ if (tool === "marking") {
 
-        drawingMarking = true;
+    drawingMarking = true;
 
-        grid.style.cursor =
-            "crosshair";
+    grid.style.cursor =
+        "crosshair";
 
-        disableBuildingClicks();
-    }
+    disableBuildingClicks();
+
+    // Allow clicks to pass through existing roads
+    document
+        .querySelectorAll(".road-shape")
+        .forEach(road => {
+            road.style.pointerEvents = "none";
+        });
+
+    // Allow clicks to pass through existing sidewalks
+    document
+        .querySelectorAll(".sidewalk-shape")
+        .forEach(sidewalk => {
+            sidewalk.style.pointerEvents = "none";
+        });
+
+    // Allow clicks to pass through existing markings
+    document
+        .querySelectorAll(".marking-line")
+        .forEach(marking => {
+            marking.style.pointerEvents = "none";
+        });
+}
 }
 
 
@@ -1460,21 +1499,18 @@ function finishMarking() {
         group
     );
 
-    group.addEventListener(
-        "click",
-        event => {
+group.addEventListener("click", event => {
+    event.stopPropagation();
 
-            event.stopPropagation();
+    if (currentTool === "select") {
+        selectRoad(group);
+        return;
+    }
 
-            if (
-                currentTool === "select"
-            ) {
-                selectMarking(
-                    group
-                );
-            }
-        }
-    );
+    if (currentTool === "marking") {
+        addMarkingPoint(getGridPosition(event));
+    }
+});
 
     markingPoints = [];
 
@@ -1615,9 +1651,23 @@ function createMarkingPath(
             "12 10";
     }
 
-    group.appendChild(
-        path
-    );
+    path.addEventListener(
+    "click",
+    event => {
+
+        event.stopPropagation();
+
+        if (
+            currentTool === "select"
+        ) {
+            selectMarking(group);
+        }
+    }
+);
+
+group.appendChild(
+    path
+);
 }
 
 
