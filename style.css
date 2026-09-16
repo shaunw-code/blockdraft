@@ -213,15 +213,10 @@ main {
 ==================== */
 
 .building-shape {
-    fill: white;
-    fill-opacity: 0.75;
-
-    stroke: #111;
-    stroke-width: 3;
-
-    stroke-dasharray: 10 5;
-
-    cursor: pointer;
+    fill: #e0e0e0;
+    stroke: #333;
+    stroke-width: 2px;
+    stroke-dasharray: none;
 }
 
 .building-shape:hover {
@@ -242,14 +237,10 @@ main {
 ==================== */
 
 .room-shape {
-    fill: white;
-    fill-opacity: 0.35;
-
+    fill: #d9d9d9;
     stroke: #333;
-
-    stroke-width: 2;
-
-    stroke-dasharray: 5 3;
+    stroke-width: 2px;
+    stroke-dasharray: none;
 
     cursor: pointer;
 }

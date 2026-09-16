@@ -84,7 +84,13 @@ const renameRoomButton =
 
 const deleteRoomButton =
     document.getElementById("delete-room-button");
+const roomColor =
+    document.getElementById("room-color");
 
+const updateRoomColorButton =
+    document.getElementById(
+        "update-room-color-button"
+    );
 
 // Road
 
@@ -440,6 +446,10 @@ grid.addEventListener(
     "click",
     (event) => {
 
+                if (currentTool === "select") {
+            deselectAll();
+        }
+
         const point =
             getGridPosition(event);
 
@@ -753,6 +763,11 @@ function finishRoom() {
 
     group.dataset.name =
         "Untitled Room";
+        group.dataset.color =
+    "#d9d9d9";
+
+polygon.style.fill =
+    "#d9d9d9";
 
     buildingLayer.appendChild(
         group
@@ -2008,6 +2023,9 @@ function selectRoom(
     roomNameInput.value =
         group.dataset.name ||
         "Untitled Room";
+        roomColor.value =
+    group.dataset.color ||
+    "#d9d9d9";
 }
 
 
@@ -2041,6 +2059,31 @@ renameRoomButton.addEventListener(
         if (label) {
             label.textContent =
                 name;
+
+                updateRoomColorButton.addEventListener(
+    "click",
+    () => {
+
+        if (!selectedRoom) {
+            return;
+        }
+
+        const polygon =
+            selectedRoom.querySelector(
+                ".room-shape"
+            );
+
+        if (!polygon) {
+            return;
+        }
+
+        selectedRoom.dataset.color =
+            roomColor.value;
+
+        polygon.style.fill =
+            roomColor.value;
+    }
+);
         }
     }
 );
