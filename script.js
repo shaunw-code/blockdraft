@@ -1227,6 +1227,27 @@ renameRoadButton.addEventListener(
     }
 );
 
+// ========================================
+// DELETE ROAD
+// ========================================
+
+deleteRoadButton.addEventListener(
+    "click",
+    () => {
+
+        if (!selectedRoad) {
+            return;
+        }
+
+        selectedRoad.remove();
+
+        selectedRoad =
+            null;
+
+        showNoSelection();
+    }
+);
+
 
 // ========================================
 // SIDEWALK DRAWING
@@ -1988,7 +2009,8 @@ deleteBuildingButton.addEventListener(
 // ROOM SELECTION
 // ========================================
 
-function selectRoom(
+function selectRoom( 
+    
     group,
     polygon
 ) {
